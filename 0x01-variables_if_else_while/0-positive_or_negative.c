@@ -1,12 +1,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-
-/*
+/**
  * main - Entry point
- * Description: this program compare if number is positive or negative
+ * Description: compare if the number (n) positive, negative or zero
  * Return: Always 0 (Success)
- * */
+ */
 int main(void)
 {
 	int n;
@@ -15,15 +14,15 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 	if (n > 0)
 	{
-	    printf("Number: %i is positive\n ", n);
+		printf("Number: %i is positive\n ", n);
 	}
 	else if (n == 0)
 	{
-	    printf("Number: %i is zero\n", n);
+		printf("Number: %i is zero\n", n);
 	}
 	else
 	{
-	    printf("Number: %i is negative\n", n);
+		printf("Number: %i is negative\n", n);
 	}
 	return (0);
 }
