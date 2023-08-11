@@ -19,6 +19,8 @@ int main(void)
 			}
 			putchar(x);
 			putchar(v);
+			if (x == '8' && v == '9')
+				break;
 			putchar(',');
 			putchar(' ');
 		}
