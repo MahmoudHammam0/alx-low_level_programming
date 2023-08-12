@@ -1,6 +1,4 @@
-
 #include <stdio.h>
-
 /**
  * main - Entry point
  * Description: print all combination of two two digits
@@ -30,6 +28,5 @@ int main(void)
 	}
 
 	putchar('\n');
-
 	return (0);
 }
