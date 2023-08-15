@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
+
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -56,6 +57,25 @@ int _islower(int c)
 		return (1);
 	}
 	else if (c >= 'A' && c <= 'Z')
+	{
+		return (0);
+	}
+	return (c);
+}
+/**
+ * _isalpha - checks if its letter of alphabet or other character
+ */
+int _isalpha(int c)
+{
+	if (c >= 'a' && c <= 'z')
+	{
+		return (1);
+	}
+	else if (c >= 'A' && c <= 'Z')
+	{
+		return (1);
+	}
+	else
 	{
 		return (0);
 	}
