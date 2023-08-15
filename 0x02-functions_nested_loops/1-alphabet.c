@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  * print_alphabet - print alphabet in lowercase followed by new line
  * Return: Always 0(Success)
