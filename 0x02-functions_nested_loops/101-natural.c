@@ -17,6 +17,6 @@ int main(void)
 		}
 		a--;
 	}
-	printf("The total value of n : %d \n", n);
+	printf("%d\n", n);
 	return (0);
 }
