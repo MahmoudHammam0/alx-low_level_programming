@@ -8,12 +8,12 @@
 int printz(int z);
 void print_times_table(int n)
 {
+	int a = 0;
+
 	if (n > 15 || n < 0)
 	{
 		return;
 	}
-	int a = 0;
-
 	while (a <= n)
 	{
 		int b = 0;
@@ -69,7 +69,7 @@ int printz(int z)
 {
 	if (z != 0)
 	{
-		_printz(z / 10);
+		printz(z / 10);
 		_putchar((z % 10) + '0');
 	}
 	return (0);
