@@ -1,11 +1,15 @@
-#include "main.h"
 /**
- * main - Entry point
- * Description: print alphabets in lowercase
- * Return: 0(Success)
+ * print_alphabet - print alphabet in lowercase followed by new line
+ * Return: Always 0(Success)
  */
-int main(void)
+void print_alphabet(void)
 {
-	print_alphabet();
-	return (0);
+	char a = 'a';
+
+	while (a <= 'z')
+	{
+		_putchar(a);
+		a++;
+	}
+	_putchar('\n');
 }
