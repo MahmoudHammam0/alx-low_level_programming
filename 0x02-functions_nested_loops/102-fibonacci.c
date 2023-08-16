@@ -13,14 +13,14 @@ int main(void)
 
 	for (x = 1; x <= 50; x++)
 	{
-	printf("%lu", i);
-	if (x == 50)
-		break;
-	result = i + j;
-	i = j;
-	j = result;
-	putchar(',');
-	putchar(' ');
+		printf("%lu", i);
+		if (x == 50)
+			break;
+		putchar(',');
+		putchar(' ');
+		result = i + j;
+		i = j;
+		j = result;
 	}
 	return (0);
 }
