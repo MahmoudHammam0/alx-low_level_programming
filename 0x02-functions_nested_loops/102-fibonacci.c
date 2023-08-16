@@ -6,14 +6,14 @@
  */
 int main(void)
 {
-	int i = 1;
-	int j = 2;
+	long int i = 1;
+	long int j = 2;
 	int x;
-	int result;
+	long int result;
 
 	for (x = 1; x <= 50; x++)
 	{
-	printf("%u, ", i);
+	printf("%lu, ", i);
 	result = i + j;
 	i = j;
 	j = result;
