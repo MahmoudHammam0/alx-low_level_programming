@@ -6,14 +6,14 @@
  */
 int main(void)
 {
-	unsigned int a = 1;
-	unsigned int b = 2;
+	unsigned long int a = 1;
+	unsigned long int b = 2;
 	int x;
-	unsigned int res;
+	unsigned long int res;
 
 	for (x = 1; x <= 99; x++)
 	{
-		printf("%u", a);
+		printf("%lu", a);
 		if (x == 99)
 			break;
 		putchar(',');
