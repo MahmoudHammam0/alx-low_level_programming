@@ -19,9 +19,9 @@ int main(void)
 		c = a + b;
 		a = b;
 		b = c;
-		if (c % 2 == 0 && k < 4000000)
+		if (c % 2 == 0 && c < 4000000)
 		{
-			result = (result + k);
+			result = (result + c);
 		}
 	}
 	printf("%lu\n", result);
