@@ -11,10 +11,10 @@ int main(void)
 	int x;
 	unsigned long int res;
 
-	for (x = 1; x <= 97; x++)
+	for (x = 1; x <= 84; x++)
 	{
 		printf("%lu", a);
-		if (x == 97)
+		if (x == 84)
 			break;
 		putchar(',');
 		putchar(' ');
