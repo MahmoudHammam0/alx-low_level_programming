@@ -6,10 +6,10 @@
  */
 int main(void)
 {
-	long int i = 1;
-	long int j = 2;
+	unsigned long i = 1;
+	unsigned long j = 2;
 	int x;
-	long int result;
+	unsigned long result;
 
 	for (x = 1; x <= 50; x++)
 	{
