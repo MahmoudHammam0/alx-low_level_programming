@@ -10,12 +10,17 @@ int main(void)
 	long unsigned int b = 2;
 	int x;
 	long unsigned int res;
-	for (x = 1; x <= 98; x++)
+	for (x = 1; x <= 97; x++)
 	{
-		printf("%lu, ", a);
+		printf("%lu", a);
+		if (x == 97)
+			break;
+		putchar(',');
+		putchar(' ');
 		res = a + b;
 		a = b;
 		b = res ;
 	}
+	putchar('\n');
 	return (0);
 }
