@@ -6,10 +6,10 @@
  */
 int main(void)
 {
-	unsigned int a = 1;
-	unsigned int b = 2;
+	long unsigned int a = 1;
+	long unsigned int b = 2;
 	int x;
-	unsigned int res;
+	long unsigned int res;
 	for (x = 1; x <= 98; x++)
 	{
 		printf("%lu, ", a);
