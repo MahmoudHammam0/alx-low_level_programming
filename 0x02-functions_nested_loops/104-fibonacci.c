@@ -6,20 +6,21 @@
  */
 int main(void)
 {
-	long unsigned int a = 1;
-	long unsigned int b = 2;
+	unsigned int a = 1;
+	unsigned int b = 2;
 	int x;
-	long unsigned int res;
-	for (x = 1; x <= 97; x++)
+	unsigned int res;
+
+	for (x = 1; x <= 99; x++)
 	{
-		printf("%lu", a);
-		if (x == 97)
+		printf("%u", a);
+		if (x == 99)
 			break;
 		putchar(',');
 		putchar(' ');
 		res = a + b;
 		a = b;
-		b = res ;
+		b = res;
 	}
 	putchar('\n');
 	return (0);
