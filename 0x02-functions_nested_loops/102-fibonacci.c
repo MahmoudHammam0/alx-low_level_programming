@@ -11,9 +11,9 @@ int main(void)
 	int x;
 	int result;
 
-	for (x = 1; x <= 9; x++)
+	for (x = 1; x <= 50; x++)
 	{
-	printf("%d, \n", i);
+	printf("%d, ", i);
 	result = i + j;
 	i = j;
 	j = result;
