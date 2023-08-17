@@ -23,6 +23,8 @@ int main(void)
 		else if (a % 5 == 0)
 		{
 			printf("Buzz");
+			if (a == 100)
+				break;
 			printf(" ");
 		}
 		else
