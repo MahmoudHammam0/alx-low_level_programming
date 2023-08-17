@@ -17,10 +17,10 @@ int main(void)
 
 	for (x = 1; x <= 91; x++)
 	{
-		printf("%lu, ", a);
 		sum = a + b;
 		a = b;
 		b = sum;
+		printf("%lu, ", sum);
 	}
 	g = a % 1000;
 	a = a / 1000;
