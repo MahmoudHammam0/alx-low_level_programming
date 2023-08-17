@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  * main - Entry point
- * Description: print all numbers from 1 to 100 with fizz and buzz of fizzbuzz
+ * Description: print all numbers from 1 to 100 with fizz and buzz or fizzbuzz
  * Return: Always 0(Success)
  */
 int main(void)
