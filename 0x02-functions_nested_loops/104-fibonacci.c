@@ -6,21 +6,42 @@
  */
 int main(void)
 {
-	unsigned long int a = 1;
-	unsigned long int b = 2;
 	int x;
-	unsigned long int res;
+	unsigned long a = 0;
+	unsigned long b = 1;
+	unsigned long sum;
+	unsigned long g;
+	unsigned long h;
+	unsigned long f;
+	unsigned long next;
 
-	for (x = 1; x <= 98; x++)
+	for (x = 1; x <= 91; x++)
 	{
-		printf("%lu", a);
-		if (x == 98)
-			break;
-		putchar(',');
-		putchar(' ');
-		res = a + b;
+		printf("%lu, ", a);
+		sum = a + b;
 		a = b;
-		b = res;
+		b = sum;
+	}
+	g = a % 1000;
+	a = a / 1000;
+	h = b % 1000;
+	b = b / 1000;
+	while (x <= 98)
+	{
+		next = (g + h) / 1000;
+		f = (g + h) - next * 1000;
+		sum = (a + b) + next;
+		g = h;
+		h = f;
+		a = b;
+		b = sum;
+		if (f >= 100)
+			printf("%lu%lu", sum, f);
+		else
+			printf("%lu0%lu", sum, f);
+		if (x != 98)
+			printf(", ");
+		x++;
 	}
 	putchar('\n');
 	return (0);
