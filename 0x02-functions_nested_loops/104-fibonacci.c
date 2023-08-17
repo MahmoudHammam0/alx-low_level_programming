@@ -7,8 +7,8 @@
 int main(void)
 {
 	int x;
-	unsigned long a = 0;
-	unsigned long b = 1;
+	unsigned long a = 1;
+	unsigned long b = 2;
 	unsigned long sum;
 	unsigned long g;
 	unsigned long h;
