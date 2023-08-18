@@ -6,29 +6,20 @@
  */
 int main(void)
 {
-	long int n = 612852475143; /*number*/
-	long int a; /*factors*/
-	long int b; /*prime factor*/
-	long int count; /*number of factors*/
+	unsigned long int n = 612852475143;
+	unsigned long int a = 3;
 
-	for (a = 1; a <= n; a++)
+	while (a <= (n / 2))
 	{
 		if (n % a == 0)
 		{
-			count = 0;
-			for (b = 1; b <= a; b++)
-			{
-				if (a % b == 0)
-				{
-					count++;
-				}
-			}
-			if (count == 2)
-			{
-				if (a > 100000)
-					printf("%li \n", a);
-			}
+			n = n / a;
+		}
+		else
+		{
+			a = a + 2;
 		}
 	}
-	return (0);
+	printf("%ld \n", n);
+
 }
