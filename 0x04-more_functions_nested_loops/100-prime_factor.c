@@ -26,7 +26,7 @@ int main(void)
 			if (count == 2)
 			{
 				if (a > 100000)
-					printf("%d \n", a);
+					printf("%li \n", a);
 			}
 		}
 	}
