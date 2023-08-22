@@ -19,6 +19,7 @@ char *_strcpy(char *dest, char *src)
 	while (*dest >= '\0')
 	{
 		return (dest);
+		dest++;
 	}
-	return (0);
+	return (dest);
 }
