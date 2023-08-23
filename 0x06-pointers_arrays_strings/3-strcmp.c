@@ -16,12 +16,12 @@ int _strcmp(char *s1, char *s2)
 	{
 		return (15);
 	}
+	else if (n == m)
+	{
+		return (0);
+	}
 	else if (n < m)
 	{
 		return (-15);
-	}
-	else
-	{
-		return (0);
 	}
 }
