@@ -9,21 +9,14 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-	int a;
-	int n = strlen(s1);
-	int m = strlen(s2);
-
-	if (n > m)
+	while (*s1 && *s2)
 	{
-		a = 15;
+		if (*s1 - *s2 != 0)
+		{
+			return (*s1 - *s2);
+		}
+		s1++;
+		s2++;
 	}
-	else if (n == m)
-	{
-		a = 0;
-	}
-	else if (n < m)
-	{
-		a = -15;
-	}
-	return (a);
+	return (0);
 }
