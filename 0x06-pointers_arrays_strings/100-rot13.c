@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * rot13 - encodes a string using rot13.
+ * rot13 - encodes a string using rot13
  * @s : pointer to first element of string
  * Return: pointer to character rotated
  */
