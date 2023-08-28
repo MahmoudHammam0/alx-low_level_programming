@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * _strpbr - locates the first occurrence of any bytes in string accept
+ * _strpbrk - locates the first occurrence of any bytes in string accept
  * @s: string to be checked
  * @accept: string of characters to match with s
  * Return: pointer to the byte in s that matches in accept or NULL if none
@@ -17,11 +17,10 @@ char *_strpbrk(char *s, char *accept)
 			if (s[i] == accept[j])
 			{
 				char *x = &s[i];
+
 				return (x);
 			}
 		}
 	}
-	if (s[i] == accept[j])
-		return (s + i);
 	return (NULL);
 }
