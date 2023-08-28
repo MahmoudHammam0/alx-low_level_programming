@@ -15,18 +15,16 @@ char *_strstr(char *haystack, char *needle)
 	{
 		for (j = 0; needle[j] != '\0'; j++)
 		{
-			if (haystack[i] == needle[j] && 
-					haystack[i + 1] == needle[j + 1] && 
-					haystack[i + 2] == needle[j + 2] &&
-					haystack[i + 3] == needle[j + 3])
+			if (haystack[i] == needle[j] && haystack[i + 1] == needle[j + 1])
 			{
 				x = &haystack[i];
-			}
-			else
-			{
-				x = NULL;
+				if (needle[j + 1] == '\0')
+				{
+					break;
+				}
+				return (x);
 			}
 		}
 	}
-	return (x);
+	return (NULL);
 }
