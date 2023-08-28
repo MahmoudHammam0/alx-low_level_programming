@@ -22,7 +22,7 @@ char *_strstr(char *haystack, char *needle)
 			}
 		}
 	}
-	if (haystack[i] == x)
+	if (haystack[i] == needle[j])
 		return (haystack + i);
 	return (NULL);
 }
