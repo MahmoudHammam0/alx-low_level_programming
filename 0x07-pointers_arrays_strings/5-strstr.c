@@ -20,14 +20,12 @@ char *_strstr(char *haystack, char *needle)
 				x = &haystack[i];
 
 				return (x);
-				if (needle[j + 1] == '\0')
-				{
-					break;
-				}
+			}
+			else
+			{
+				return (NULL);
 			}
 		}
 	}
-	if ((haystack + i) == needle[j])
-		return (needle + j);
 	return (NULL);
 }
