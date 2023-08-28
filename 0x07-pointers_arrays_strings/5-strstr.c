@@ -18,11 +18,12 @@ char *_strstr(char *haystack, char *needle)
 			if (haystack[i] == needle[j] && haystack[i + 1] == needle[j + 1])
 			{
 				x = &haystack[i];
+
+				return (x);
 				if (needle[j + 1] == '\0')
 				{
 					break;
 				}
-				return (x);
 			}
 		}
 	}
