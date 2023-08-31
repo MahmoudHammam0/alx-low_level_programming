@@ -20,10 +20,10 @@ int _strlen_recursion(char *s)
 int checker2(char *s, int x, int y)
 {
 	if (s[x] == s[y])
-		if (x > (y / 2))
+		if (x > y / 2)
 			return (1);
 		else
-			return (checker2(s, (x + 1), (y - 1)));
+			return (checker2(s, x + 1, y - 1));
 	else
 		return (0);
 }
@@ -34,5 +34,5 @@ int checker2(char *s, int x, int y)
  */
 int is_palindrome(char *s)
 {
-	return (checker2(s, 0, _strlen_recursion(s - 1)));
+	return (checker2(s, 0, _strlen_recursion(s) - 1));
 }
