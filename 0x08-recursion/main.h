@@ -62,3 +62,5 @@ int checker(int x, int n);
 int _sqrt_recursion(int n);
 int checker(int x, int n);
 int is_prime_number(int n);
+int is_palindrome(char *s);
+int checker(char *s, int x, int y);
