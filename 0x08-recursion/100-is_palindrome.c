@@ -7,9 +7,7 @@
 int _strlen_recursion(char *s)
 {
 	if (*s != '\0')
-	{
 		return (sizeof(*s) + _strlen_recursion(s + 1));
-	}
 	return (0);
 }
 /**
@@ -22,20 +20,12 @@ int _strlen_recursion(char *s)
 int checker2(char *s, int x, int y)
 {
 	if (s[x] == s[y])
-	{
 		if (x > (y / 2))
-		{
 			return (1);
-		}
 		else
-		{
 			return (checker2(s, (x + 1), (y - 1)));
-		}
-	}
 	else
-	{
 		return (0);
-	}
 }
 /**
  * is_palindrome - check if a string is palindrome
