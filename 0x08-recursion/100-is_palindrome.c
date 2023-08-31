@@ -4,10 +4,12 @@
  * @s: pointer to the first element of string
  * Return: length of string
  */
-int _strlen_recursion(char *s);
+int _strlen_recursion(char *s)
 {
 	if (*s != '\0')
+	{
 		return (sizeof(*s) + _strlen_recursion(s + 1));
+	}
 	return (0);
 }
 /**
@@ -27,7 +29,7 @@ int checker2(char *s, int x, int y)
 		}
 		else
 		{
-			return (checker(s, (x + 1), (y - 1)));
+			return (checker2(s, (x + 1), (y - 1)));
 		}
 	}
 	else
@@ -42,5 +44,5 @@ int checker2(char *s, int x, int y)
  */
 int is_palindrome(char *s)
 {
-	return (checker(s, 0, _strlen(s) - 1));
+	return (checker2(s, 0, _strlen(s) - 1));
 }
