@@ -64,3 +64,5 @@ int checker(int x, int n);
 int is_prime_number(int n);
 int is_palindrome(char *s);
 int checker2(char *s, int x, int y);
+int wildcmp(char *s1, char *s2);
+int str_cmp(char *s1, char *s2, int x, int y);
