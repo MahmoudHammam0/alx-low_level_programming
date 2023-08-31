@@ -44,5 +44,5 @@ int checker2(char *s, int x, int y)
  */
 int is_palindrome(char *s)
 {
-	return (checker2(s, 0, _strlen(s) - 1));
+	return (checker2(s, 0, _strlen_recursion(s - 1)));
 }
