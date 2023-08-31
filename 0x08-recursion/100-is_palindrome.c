@@ -11,13 +11,13 @@ int _strlen_recursion(char *s);
 	return (0);
 }
 /**
- * checker - check if string is a palindrome.
+ * checker2- check if string is a palindrome.
  * @s: pointer to the first element of string
  * @x: number of element from the left
  * @y: number of element from the right
  * Return: returns 1 if a string is a palindrome and 0 if not.
  */
-int checker(char *s, int x, int y)
+int checker2(char *s, int x, int y)
 {
 	if (s[x] == s[y])
 	{
