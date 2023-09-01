@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		{
 			printf("%d\n", sum);
 		}
-		else
+		else if (i != argc)
 		{
 			printf("Error\n");
 			return (1);
