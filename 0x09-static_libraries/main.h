@@ -1,3 +1,5 @@
+#ifndef MAIN_H
+#define MAIN_H
 int _putchar(char c);
 void print_alphabet(void);
 void print_alphabet_x10(void);
@@ -66,3 +68,4 @@ int is_palindrome(char *s);
 int checker2(char *s, int x, int y);
 int wildcmp(char *s1, char *s2);
 int str_cmp(char *s1, char *s2, int x, int y);
+#endif
