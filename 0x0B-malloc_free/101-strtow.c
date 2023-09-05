@@ -32,7 +32,7 @@ char **strtow(char *str)
 	char **s;
 	int i = 0, j, word = 0, n = 0, c, x;
 
-	if (str == NULL || *str == "")
+	if (str == NULL || *str == '\0')
 		return (NULL);
 	n = wordcount(str);
 	if (n == 1)
@@ -43,7 +43,7 @@ char **strtow(char *str)
 	s[n - 1] = NULL;
 	while (str[i])
 	{
-		if (str[i] != ' ' && (i == 0 || str[i - 1]) == ' ')
+		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 		{
 			for (j = 1; str[i + j] != ' ' && str[i + j]; j++)
 				;
