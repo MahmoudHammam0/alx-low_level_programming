@@ -10,20 +10,25 @@
  */
 char *argstostr(int ac, char **av)
 {
-	char **s;
-	int i;
+	char *s;
+	int i = 0, j = 0, x = 0, c = 0;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	s = malloc(sizeof(char *) * ac);
+	for (c = 0, i = 0; i < ac; i++, c++)
+		c += strlen(av[i]);
+	s = malloc(sizeof(char) * (c + 1));
 	if (s == NULL)
 		return (NULL);
 	for (i = 0; i < ac; i++)
 	{
-		s[i] = malloc(sizeof(char) * strlen(av[i]));
-		if (s[i] == NULL)
-			return (NULL);
-		strcpy(s[i], av[i]);
+		for (j = 0; av[i][j] != '\0'; j++, x++)
+		{
+			s[x] = av[i][j];
+		}
+		s[x] = '\n';
+		x++;
 	}
-	return (*s);
+	s[x] = '\0';
+	return (s);
 }
