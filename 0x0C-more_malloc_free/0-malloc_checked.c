@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 /**
  * malloc_checked - allocates memory using malloc.
  * @b: number to blocks to be allocated
@@ -7,10 +8,10 @@
  */
 void *malloc_checked(unsigned int b)
 {
-	int *s;
+	int *p;
 
-	s = malloc(sizeof(int) * b);
-	if (s == NULL)
+	p = malloc(b);
+	if (p == NULL)
 		exit(98);
-	return (s);
+	return (p);
 }
