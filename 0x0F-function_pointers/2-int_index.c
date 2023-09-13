@@ -1,5 +1,4 @@
 #include "function_pointers.h"
-#include <stdio.h>
 /**
  * int_index - searches for an integer element in an array of integers
  * @size: number of elements in the array
@@ -18,7 +17,7 @@ int int_index(int *array, int size, int (*cmp)(int))
 		x = (*cmp)(array[i]);
 		if (x > 0)
 			break;
-		else if (i == size)
+		else
 			return (-1);
 	}
 	return (i);
