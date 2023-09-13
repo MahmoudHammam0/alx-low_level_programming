@@ -8,7 +8,7 @@
  * @argv: array of argument strings
  * Return: Always 0(Success)
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	int A = atoi(argv[1]);
 	int B = atoi(argv[3]);
