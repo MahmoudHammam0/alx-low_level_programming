@@ -64,12 +64,12 @@ void print_all(const char * const format, ...)
 	va_start(args, format);
 	while (format[i] && format != '\0')
 	{
-		while (c[j].x != '\0')
+		while (c[j]->x != '\0')
 		{
-			if (format[i] == c[j].x)
+			if (format[i] == c[j]->x)
 			{
 				printf("%s", v);
-				c[j].ptr(args);
+				c[j]->ptr(args);
 				v = ", ";
 			}
 			j++;
