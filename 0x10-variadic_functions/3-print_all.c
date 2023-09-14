@@ -52,24 +52,27 @@ void print_str(va_list args)
  */
 void print_all(const char * const format, ...)
 {
-	fmt c[] = {'i', print_int}
-	{'c', print_char}
-	{'f', print_float}
-	{'s', print_str}
-	{'\0', NULL};
+	fmt c[] = {
+	{'i', print_int},
+	{'c', print_char},
+	{'f', print_float},
+	{'s', print_str},
+	{'\0', NULL}
+	};
 	va_list args;
-	int i = 0, j = 0;
+	int i = 0, j;
 	char *v = "";
 
 	va_start(args, format);
-	while (format[i] && format != '\0')
+	while (format && format[i] != '\0')
 	{
-		while (c[j]->x != '\0')
+		j = 0;
+		while ((c + j)->x != '\0')
 		{
-			if (format[i] == c[j]->x)
+			if (format[i] == (c + j)->x)
 			{
 				printf("%s", v);
-				c[j]->ptr(args);
+				(c + j)->ptr(args);
 				v = ", ";
 			}
 			j++;
