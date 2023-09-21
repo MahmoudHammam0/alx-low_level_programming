@@ -23,15 +23,13 @@ list_t *add_node_end(list_t **head, const char *str)
 	else
 	{
 		ptr = *head;
-		for ( ; ptr; )
+		for ( ; ptr; ptr = ptr->next)
 		{
 			if (ptr->next == NULL)
 			{
 				ptr->next = end;
 				break;
 			}
-			else
-				ptr = ptr->next;
 		}
 	}
 	return (end);
