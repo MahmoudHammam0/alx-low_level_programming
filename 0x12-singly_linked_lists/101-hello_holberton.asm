@@ -1,8 +1,8 @@
-global _start
+global main
 extern printf
 
 	section .text
-_start:
+main:
 	push rbp
 	mov rdi, fmt
 	mov rsi, text
