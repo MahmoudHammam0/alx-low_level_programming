@@ -1,7 +1,7 @@
+	section .text
 global main
 extern printf
 
-	section .text
 main:
 	push rbp
 	mov rdi, fmt
