@@ -1,19 +1,15 @@
-section .data
-	text: db "Hello, Holberton",10,0
-	format: db "%s",0
+global main
+extern printf
 
-section .text
-	global _start
-	extern printf
-
-_start:
+	section .text
+main:
 	push rbp
-	mov rbp, rsp
-
+	mov rdi, fmt
 	mov rsi, text
-	mov rdi, format
+	mov rax, 0
 	call printf
-
 	pop rbp
 	mov rax, 0
 	ret
+text: db "Hello, Holberton", 0
+fmt:	db "%s", 10, 0
