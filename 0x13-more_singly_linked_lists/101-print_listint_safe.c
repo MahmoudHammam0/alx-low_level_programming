@@ -11,7 +11,7 @@
 const listint_t **new(const listint_t **old, size_t size, const listint_t *new)
 {
 	const listint_t **ptr;
-	int x = 0;
+	unsigned int x = 0;
 
 	ptr = malloc(size * sizeof(listint_t *));
 	if (ptr == NULL)
