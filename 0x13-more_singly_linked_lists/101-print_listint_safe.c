@@ -1,43 +1,29 @@
 #include "lists.h"
 /**
- *loop_num - count number of loop nodes in the list
- *@head: pointer to the first node of the list
- *Return: number of loop nodes
+ *new_list - make a new list of nodes in linked list
+ *@old: old list
+ *@size: new list size
+ *@new: new list listint_t **newlist(const listint_t **old, int size, const listint_t *new) 
+ *Return: address of the new made list
  */
-int loop_num(const listint_t *head)
+const listint_t **newlist(const listint_t **old, int size, const listint_t *new)
 {
-	const listint_t *ptr, *ptr2;
-	int n = 1;
+	const listint_t **ptr;
+	int i = 0;
 
-	if (head == NULL)
-		return (0);
-	else if (head->next == NULL)
-		return (0);
-	ptr = head->next;
-	ptr2 = head->next->next;
-	while (ptr2)
+	ptr = malloc(sizeof(listint_t *) * size);
+	if (ptr  == NULL)
 	{
-		if (ptr == ptr2)
-		{
-			ptr = head;
-			while (ptr != ptr2)
-			{
-				n++;
-				ptr = ptr->next;
-				ptr2 = ptr2->next;
-			}
-			ptr = ptr->next;
-			while (ptr != ptr2)
-			{
-				n++;
-				ptr = ptr->next;
-			}
-			return (n);
-		}
-		ptr = ptr->next;
-		ptr2 = ptr2->next->next;
+		free(old);
+		exit(98);
 	}
-	return (0);
+	while (i < size)
+	{
+		ptr[i] = old[i];
+	}
+	ptr[i] = new;
+	free(old);
+	return (ptr);
 }
 /**
  *print_listint_safe - prints a listint_t linked list.
@@ -46,27 +32,27 @@ int loop_num(const listint_t *head)
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	int n, i = 0;
+	int n = 0;
+	int x = 0;
+	const listint_t **ptr;
 
-	n = loop_num(head);
-	if (n == 0)
+	while (head != NULL)
 	{
-		while (head != NULL)
+		while (x < n)
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
-			n++;
+			if (head == ptr[x])
+			{
+				printf("->[%p] %d\n", (void *)head, head->n);
+				free(ptr);
+				return (n);
+			}
+			x++;
 		}
+		n++;
+		ptr = newlist(ptr, n, head);
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
 	}
-	else
-	{
-		while (i < n)
-		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
-			i++;
-		}
-		printf("->[%p] %d\n", (void *)head, head->n);
-	}
+	free(ptr);
 	return (n);
 }
