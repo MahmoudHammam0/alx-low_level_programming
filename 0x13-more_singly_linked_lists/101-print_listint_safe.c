@@ -1,12 +1,12 @@
 #include "lists.h"
 /**
- *new_list - make a new list of nodes in linked list
+ *new - make a new list of nodes in linked list
  *@old: old list
  *@size: new list size
- *@new: new list listint_t **newlist(const listint_t **old, int size, const listint_t *new) 
+ *@new: new node
  *Return: address of the new made list
  */
-const listint_t **newlist(const listint_t **old, int size, const listint_t *new)
+const listint_t **new(const listint_t **old, int size, const listint_t *new)
 {
 	const listint_t **ptr;
 	int i = 0;
@@ -50,7 +50,7 @@ size_t print_listint_safe(const listint_t *head)
 			x++;
 		}
 		n++;
-		ptr = newlist(ptr, n, head);
+		ptr = new(ptr, n, head);
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
 	}
