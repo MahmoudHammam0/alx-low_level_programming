@@ -40,7 +40,7 @@ size_t print_listint_safe(const listint_t *head)
 	size_t x = 0, n = 0;
 	const listint_t **ptr = NULL;
 
-	while ( ; head != NULL; head = head->next)
+	for ( ; head != NULL; head = head->next)
 	{
 		while (x < n)
 		{
