@@ -28,8 +28,8 @@ size_t free_listint_safe(listint_t **h)
 		{
 			free(*h);
 			*h = NULL;
-		n++;
-		break;
+			n++;
+			break;
 		}
 	}
 	*h = NULL;
