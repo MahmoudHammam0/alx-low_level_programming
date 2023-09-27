@@ -1,56 +1,55 @@
 #include "lists.h"
+
 /**
- *new - make a new list of nodes in linked list
- *@old: old list
- *@size: new list size
- *@new: new node
- *Return: address of the new made list
+ * new - make a new list
+ * @old: the old list
+ * @size: new list size
+ * @new: new node to be added to the list
+ * Return: address of the new list
  */
-const listint_t **new(const listint_t **old, int size, const listint_t *new)
+
+const listint_t **new(const listint_t **old, size_t size, const listint_t *new)
 {
 	const listint_t **ptr;
-	int i = 0;
+	size_t i;
 
-	ptr = malloc(sizeof(listint_t *) * size);
-	if (ptr  == NULL)
+	ptr = malloc(size * sizeof(listint_t *));
+	if (ptr == NULL)
 	{
 		free(old);
 		exit(98);
 	}
-	while (i < size - 1)
-	{
+	for (i = 0; i < size - 1; i++)
 		ptr[i] = old[i];
-		i++;
-	}
 	ptr[i] = new;
 	free(old);
 	return (ptr);
 }
+
 /**
- *print_listint_safe - prints a listint_t linked list.
- *@head: pointer to the first node of the list
- *Return: the number of nodes in the list
+ * print_listint_safe - prints a listint_t linked list.
+ * @head: pointer to the first node of the list
+ * Return: the number of nodes in the list
  */
+
 size_t print_listint_safe(const listint_t *head)
 {
-	int n = 0;
-	int x = 0;
-	const listint_t **ptr;
+	size_t i, n = 0;
+	const listint_t **ptr = NULL;
 
 	while (head != NULL)
 	{
-		while (x < n)
+		for (i = 0; i < n; i++)
 		{
-			if (head == ptr[x])
+			if (head == ptr[i])
 			{
-				printf("->[%p] %d\n", (void *)head, head->n);
+				printf("-> [%p] %d\n", (void *)head, head->n);
 				free(ptr);
 				return (n);
 			}
-			x++;
 		}
 		n++;
-		ptr = new(ptr, n, head);
+		ptr = new(list, num, head);
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
 	}
