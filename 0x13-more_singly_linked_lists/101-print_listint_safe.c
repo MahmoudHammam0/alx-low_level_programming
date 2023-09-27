@@ -1,13 +1,13 @@
 #include "lists.h"
 
 /**
- * new - make a new list
+ * w - make a new list
  * @old: the old list
  * @size: new list size
  * @new: new node to be added to the list
  * Return: address of the new list
  */
-listint_t **new(const listint_t **old, size_t size, const listint_t *new)
+const listint_t **w(const listint_t **old, size_t size, const listint_t *new)
 {
 	const listint_t **ptr;
 	size_t x;
@@ -48,7 +48,7 @@ size_t print_listint_safe(const listint_t *head)
 			}
 		}
 		n++;
-		ptr = new(ptr, n, head);
+		ptr = w(ptr, n, head);
 		printf("[%p] %d\n", (void *)head, head->n);
 	}
 	free(ptr);
