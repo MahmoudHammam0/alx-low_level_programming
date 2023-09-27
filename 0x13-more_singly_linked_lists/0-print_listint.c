@@ -1,7 +1,7 @@
 #include "lists.h"
 /**
  * print_listint - prints all the elements of a listint_t list
- *@h: head ponter which points to the first node in the list
+ *@h:head ponter which points to the first node in the list
  *Return: number of nodes
  */
 size_t print_listint(const listint_t *h)
