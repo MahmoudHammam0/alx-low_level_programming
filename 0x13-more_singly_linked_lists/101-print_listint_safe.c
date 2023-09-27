@@ -17,9 +17,10 @@ const listint_t **newlist(const listint_t **old, int size, const listint_t *new)
 		free(old);
 		exit(98);
 	}
-	while (i < size)
+	while (i < size - 1)
 	{
 		ptr[i] = old[i];
+		i++;
 	}
 	ptr[i] = new;
 	free(old);
