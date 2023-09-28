@@ -21,20 +21,14 @@ void print_binary(unsigned long int n)
 	}
 	else
 	{
-		for (num = 15; num >= 0; num--)
+		for (num = 30; num >= 0; num--)
 		{
 			i = n >> num;
 			i = i & 1;
+			if (i == 1)
+				j = 1;
 			if (j == 1)
 				_putchar(i + '0');
-			else
-			{
-				if (i == 1)
-				{
-					j = 1;
-					_putchar(i + '0');
-				}
-			}
 		}
 	}
 }
