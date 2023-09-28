@@ -22,7 +22,7 @@ int check(const char *s)
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int i, c, num, x, sum = 0, p = 1;
+	int i, c, num, x, sum = 0, p = 1;
 
 	if (b == NULL)
 		return (0);
