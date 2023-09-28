@@ -6,7 +6,7 @@
  */
 void print_binary(unsigned long int n)
 {
-	signed long int num;
+	long int num;
 	int i, j = 0;
 
 	if (n == 1)
@@ -25,10 +25,16 @@ void print_binary(unsigned long int n)
 		{
 			i = n >> num;
 			i = i & 1;
-			if (i == 1)
-				j = 1;
 			if (j == 1)
 				_putchar(i + '0');
+			else
+			{
+				if (i == 1)
+				{
+					j = 1;
+					_putchar(i + '0');
+				}
+			}
 		}
 	}
 }
