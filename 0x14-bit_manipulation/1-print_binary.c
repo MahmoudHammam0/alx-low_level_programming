@@ -14,21 +14,18 @@ void print_binary(unsigned long int n)
 		_putchar('1');
 		return;
 	}
-	else if (n == 0)
+	if (n == 0)
 	{
 		_putchar('0');
 		return;
 	}
-	else
+	for (num = 28; num >= 0; num--)
 	{
-		for (num = 28; num >= 0; num--)
-		{
-			i = n >> num;
-			i = i & 1;
-			if (i == 1)
-				j = 1;
-			if (j == 1)
-				_putchar(i + '0');
-		}
+		i = n >> num;
+		i = i & 1;
+		if (i == 1)
+			j = 1;
+		if (j == 1)
+			_putchar(i + '0');
 	}
 }
