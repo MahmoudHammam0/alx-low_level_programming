@@ -7,8 +7,7 @@
 void print_binary(unsigned long int n)
 {
 	signed long int num;
-	int j = 0;
-	char i;
+	int j = 0, i;
 
 	if (n == 1)
 	{
@@ -20,10 +19,9 @@ void print_binary(unsigned long int n)
 		_putchar('0');
 		return;
 	}
-	for (num = (sizeof(n) * 7); num >= 0; num--)
+	for (num = (sizeof(n) * 8 - 1); num >= 0; num--)
 	{
-		i = n >> num;
-		i = i & 1;
+		i = (n >> num) & 1;
 		if (i == 1)
 			j = 1;
 		if (j == 1)
