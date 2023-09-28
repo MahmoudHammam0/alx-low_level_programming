@@ -8,6 +8,8 @@ int check(const char *s)
 {
 	int i;
 
+	if (s == NULL)
+		return (1);
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] < '0' || s[i] > '1')
