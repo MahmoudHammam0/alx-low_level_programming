@@ -24,7 +24,8 @@ int check(const char *s)
  */
 unsigned int binary_to_uint(const char *b)
 {
-	int i, c, num, x, sum = 0, p = 1;
+	int i, c, x, sum = 0, p = 1;
+	unsigned int num;
 
 	if (b == NULL)
 		return (0);
@@ -32,8 +33,6 @@ unsigned int binary_to_uint(const char *b)
 	if (c == 1)
 		return (0);
 	num = atoi(b);
-	if (num == 0)
-		return (0);
 	for (i = 0; num != 0; i++)
 	{
 		x = num % 10;
