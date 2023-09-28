@@ -21,7 +21,7 @@ void print_binary(unsigned long int n)
 	}
 	else
 	{
-		for (num = 30; num >= 0; num--)
+		for (num = 28; num >= 0; num--)
 		{
 			i = n >> num;
 			i = i & 1;
