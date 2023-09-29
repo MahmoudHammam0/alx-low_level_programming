@@ -13,8 +13,8 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	{
 		if ((n & 1) != (m & 1))
 			count++;
-		n = n >> 1;
 		m = m >> 1;
+		n = n >> 1;
 	}
 	return (count);
 }
