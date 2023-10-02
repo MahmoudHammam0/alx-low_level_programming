@@ -226,7 +226,7 @@ void entry(unsigned long int entry, unsigned char *ptr)
 }
 
 /**
- *close - Closes an ELF file.
+ *elf_close - Closes an ELF file.
  *@fd: The file descriptor of the ELF file.
  *Return: Nothing
  */
