@@ -12,17 +12,21 @@ void copy_func(int fdf, int fdt, char *s1, char *s2, char *buff)
 {
 	int r, w;
 
-	r = read(fdf, buff, 1204);
-	if (r < 0)
+	r = 1;
+	while (r)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s1);
-		exit(98);
-	}
-	w = write(fdt, buff, r);
-	if (w < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
-		exit(99);
+		r = read(fdf, buff, 1024);
+		if (r < 0)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s1);
+			exit(98);
+		}
+		w = write(fdt, buff, r);
+		if (w < 0)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
+			exit(99);
+		}
 	}
 }
 /**
@@ -49,7 +53,7 @@ void files(char *s1, char *s2)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
 		exit(99);
 	}
-	buff = malloc(sizeof(char) * 1204);
+	buff = malloc(sizeof(char) * 1024);
 	if (buff == NULL)
 		exit(-1);
 	copy_func(fdf, fdt, s1, s2, buff);
@@ -65,6 +69,7 @@ void files(char *s1, char *s2)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdt);
 		exit(100);
 	}
+	free(buff);
 }
 /**
  * main - Entry point
