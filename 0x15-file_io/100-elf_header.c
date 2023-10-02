@@ -83,7 +83,7 @@ void data(unsigned char *ptr)
 
 /**
  *version - gets the version of an ELF header.
- *@ptr: A pointer to an array containing the ELF version.
+ *@ptr: A pointer to ELF version array.
  *Return: Nothing
  */
 void version(unsigned char *ptr)
@@ -98,7 +98,7 @@ void version(unsigned char *ptr)
 
 /**
  *osabi - gets the OS/ABI of an ELF header.
- *@ptr: A pointer to an array containing the ELF version.
+ *@ptr: A pointer to ELF version array.
  *Return: Nothing
  */
 void osabi(unsigned char *ptr)
@@ -130,7 +130,7 @@ void osabi(unsigned char *ptr)
 
 /**
  *abi - gets the ABI version of an ELF header.
- *@ptr: A pointer to an array containing the ELF ABI version.
+ *@ptr: A pointer to ELF ABI version array.
  *Return: Nothing
  */
 void abi(unsigned char *ptr)
@@ -141,8 +141,8 @@ void abi(unsigned char *ptr)
 
 /**
  *type - gets the type of an ELF header.
- *@type: The ELF type.
- *@ptr: A pointer to an array containing the ELF class.
+ *@type: The type of ELF.
+ *@ptr: A pointer to ELF class array.
  *Return: Nothing
  */
 void type(unsigned int type, unsigned char *ptr)
@@ -150,32 +150,24 @@ void type(unsigned int type, unsigned char *ptr)
 	if (ptr[EI_DATA] == ELFDATA2MSB)
 		type >>= 8;
 	printf("  Type:                              ");
-	switch (type)
-	{
-		case ET_NONE:
-			printf("NONE (None)\n");
-			break;
-		case ET_REL:
-			printf("REL (Relocatable file)\n");
-			break;
-		case ET_EXEC:
-			printf("EXEC (Executable file)\n");
-			break;
-		case ET_DYN:
-			printf("DYN (Shared object file)\n");
-			break;
-		case ET_CORE:
-			printf("CORE (Core file)\n");
-			break;
-		default:
-			printf("<unknown: %x>\n", type);
-	}
+	if (type == ET_NONE)
+		printf("NONE (None)\n");
+	else if (type == ET_REL)
+		printf("REL (Relocatable file)\n");
+	else if (type == ET_EXEC)
+		printf("EXEC (Executable file)\n");
+	else if (type == ET_DYN)
+		printf("DYN (Shared object file)\n");
+	else if (type == ET_CORE)
+		printf("CORE (Core file)\n");
+	else
+		printf("<unknown: %x>\n", type);
 }
 
 /**
  *entry - Prints the entry point of an ELF header.
- *@entry: The address of the ELF entry point.
- *@ptr: A pointer to an array containing the ELF class.
+ *@entry: the ELF entry point address.
+ *@ptr: A pointer to ELF class array.
  *Return: Nothing
  */
 void entry(unsigned long int entry, unsigned char *ptr)
