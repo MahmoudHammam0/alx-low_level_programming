@@ -12,14 +12,16 @@ void copy_func(int fdf, int fdt, char *s1, char *s2, char *buff)
 {
 	int r, w;
 
+	if (buff == NULL)
+		exit(-1);
 	r = read(fdf, buff, 1024);
-	if (r < 0)
+	if (r < 0 || s1 == NULL || fdf < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s1);
 		exit(98);
 	}
 	w = write(fdt, buff, r);
-	if (w < 0)
+	if (w < 0 || s2 == NULL || fdt < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
 		exit(99);
@@ -37,14 +39,14 @@ void files(char *s1, char *s2)
 	char *buff;
 
 	fdf = open(s1, O_RDONLY);
-	if (fdf < 0)
+	if (fdf < 0 || s1 == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s1);
 		exit(98);
 	}
 	fdt = open(s2, O_CREAT | O_WRONLY | O_TRUNC,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	if (fdt < 0)
+	if (fdt < 0 || s2 == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
 		exit(99);
