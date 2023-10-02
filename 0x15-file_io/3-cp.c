@@ -1,90 +1,95 @@
 #include "main.h"
 /**
- * Error97 - handle error 97
- *
+ * copy_func - copy contents of from to to file
+ * @fdf: file descriptor of from file
+ * @fdt: file descriptor of to file
+ * @s1: name of from file
+ * @s2: name of to file
+ * @buff: buffer of 1024 size
  * Return: Nothing
  */
-void Error97(void)
+void copy_func(int fdf, int fdt, char *s1, char *s2, char *buff)
 {
-	dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
-	exit(97);
+	int r, w, c1, c2;
+
+	r = read(fdf, buff, 1024);
+	if (r < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s1);
+		exit(98);
+	}
+	w = write(fdt, buff, r);
+	if (w < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
+		exit(99);
+	}
+	c1 = close(fdf);
+	if (c1 < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdf);
+		exit(100);
+	}
+	c2 = close(fdt);
+	if (c2 < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdt);
+		exit(100);
+	}
 }
 /**
- * Error98 - handle error 98
- *@s: file name
+ * files - open the from file and make to file
+ * @s1: argument1
+ * @s2: argument2
  * Return: Nothing
  */
-void Error98(char *s)
+void files(char *s1, char *s2)
 {
-	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s);
-	exit(98);
-}
-/**
- * Error99 - handle error 99
- *@s: file name
- * Return: Nothing
- */
-void Error99(char *s)
-{
-	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s);
-	exit(99);
-}
-/**
- * Error100 - handle error 100
- * @fd: file discriptor number
- * Return: Nothing
- */
-void Error100(int fd)
-{
-	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-	exit(100);
+	int fdf, fdt;
+	char *buff;
+
+	fdf = open(s1, O_RDONLY);
+	if (fdf < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s1);
+		exit(98);
+	}
+	fdt = open(s2, O_WRONLY | O_TRUNC | O_CREAT,
+			S_IRUSR |S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	if (fdt < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
+		exit(99);
+	}
+	buff = malloc(sizeof(char) * 1024);
+	if (buff == NULL)
+		exit(-1);
+	copy_func(fdf, fdt, s1, s2, buff);
 }
 /**
  * main - Entry point
  * Description: copies the content of a file to another file.
- * @argc: argument count
- * @argv: array of strings of arguments
+ * @argc: count of arguments
+ * @argv: array of pointers to arguments strings
  * Return: 0 (Success)
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int fdf, fdt, r, w, c;
-	char *buff;
-
 	if (argc != 3)
-		Error97();
-	buff = malloc(sizeof(char) * 1024);
-	if (buff == NULL)
-		Error97();
-	fdf = open(argv[1], O_RDONLY);
-	if (fdf < 0)
-		Error98(argv[1]);
-	r = read(fdf, buff, 1024);
-	if (r < 0)
 	{
-		free(buff);
-		close(fdf);
-		Error98(argv[1]);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
 	}
-	fdt = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
-	if (fdt < 0)
-		Error99(argv[2]);
-	w = write(fdt, buff, 1024);
-	if (w < 0)
+	if (argv[1] == NULL)
 	{
-		free(buff);
-		close(fdf);
-		close(fdt);
-		Error99(argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
 	}
-	c = close(fdf);
-	if (c < 0)
-		Error100(c);
-	c = close(fdt);
-	if (c < 0)
-		Error100(c);
-	free(buff);
-	close(fdf);
-	close(fdt);
+	if (argv[2] == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
+	files(argv[1], argv[2]);
 	return (0);
 }
