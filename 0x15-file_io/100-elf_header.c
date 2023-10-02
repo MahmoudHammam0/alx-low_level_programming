@@ -33,10 +33,7 @@ void elf(unsigned char *ptr)
 
 	for (i = 0; i < 4; i++)
 	{
-		if (ptr[i] != 127 &&
-				ptr[i] != 'E' &&
-				ptr[i] != 'L' &&
-				ptr[i] != 'F')
+		if (ptr[i] != 127 && ptr[i] != 'E' && ptr[i] != 'L' && ptr[i] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: None ELF file\n");
 			exit(98);
