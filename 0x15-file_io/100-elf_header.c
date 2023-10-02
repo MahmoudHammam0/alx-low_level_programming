@@ -108,13 +108,13 @@ void osabi(unsigned char *ptr)
 		printf("UNIX - System V\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_HPUX)
 		printf("UNIX - HP-UX\n");
-	else if (ptr[EI_OSABI]== ELFOSABI_NETBSD)
+	else if (ptr[EI_OSABI] == ELFOSABI_NETBSD)
 		printf("UNIX - NetBSD\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_LINUX)
 		printf("UNIX - Linux\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_SOLARIS)
 		printf("UNIX - Solaris\n");
-	else if(ptr[EI_OSABI] == ELFOSABI_IRIX)
+	else if (ptr[EI_OSABI] == ELFOSABI_IRIX)
 		printf("UNIX - IRIX\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_FREEBSD)
 		printf("UNIX - FreeBSD\n");
