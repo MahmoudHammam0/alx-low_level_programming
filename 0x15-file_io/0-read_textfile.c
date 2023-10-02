@@ -13,19 +13,22 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (filename == NULL)
 		return (0);
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (0);
 	buff = malloc(letters * sizeof(char));
 	if (buff == NULL)
 		return (0);
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		free(buff);
+		return (0);
+	}
 	r = read(fd, buff, letters);
 	if (r < 0)
 	{
 		free(buff);
 		return (0);
 	}
-	w = write(STDOUT_FILENO, buff, letters);
+	w = write(STDOUT_FILENO, buff, r);
 	if (w < r)
 	{
 		free(buff);
