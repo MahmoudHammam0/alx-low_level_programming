@@ -89,7 +89,7 @@ void data(unsigned char *ptr)
 			printf("2's complement, big endian\n");
 			break;
 		default:
-			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+			printf("<unknown: %x>\n", ptr[EI_CLASS]);
 	}
 }
 
@@ -181,7 +181,7 @@ void type(unsigned int type, unsigned char *ptr)
 	if (ptr[EI_DATA] == ELFDATA2MSB)
 		type >>= 8;
 	printf("  Type:                              ");
-	switch (e_type)
+	switch (type)
 	{
 		case ET_NONE:
 			printf("NONE (None)\n");
@@ -230,7 +230,7 @@ void entry(unsigned long int entry, unsigned char *ptr)
  *@fd: The file descriptor of the ELF file.
  *Return: Nothing
  */
-void close(int fd)
+void elf_close(int fd)
 {
 	if (close(fd) < 0)
 	{
@@ -258,22 +258,22 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		exit(98);
 	}
 	h = malloc(sizeof(Elf64_Ehdr));
-	if (header == NULL)
+	if (h == NULL)
 	{
-		close_elf(fd);
+		elf_close(fd);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
-	r = read(fd, header, sizeof(Elf64_Ehdr));
+	r = read(fd, h, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
 		free(h);
-		close_elf(fd);
+		elf_close(fd);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
 	}
 
-	check_elf(h->e_ident);
+	elf(h->e_ident);
 	printf("ELF Header:\n");
 	magic(h->e_ident);
 	class(h->e_ident);
@@ -284,6 +284,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	type(h->e_type, h->e_ident);
 	entry(h->e_entry, h->e_ident);
 	free(h);
-	close(fd);
+	elf_close(fd);
 	return (0);
 }
