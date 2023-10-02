@@ -55,7 +55,7 @@ void files(char *s1, char *s2)
 		exit(98);
 	}
 	fdt = open(s2, O_WRONLY | O_TRUNC | O_CREAT,
-			S_IRUSR |S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (fdt < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
