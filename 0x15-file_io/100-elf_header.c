@@ -4,7 +4,7 @@
 #include <sys/stat.h>
 /**
  *elf - Checks if the file is ELF file or not
- *@ptr: A pointer to an array of ELF magic numbers.
+ *@ptr: A pointer to magic numbers array.
  *Return: Nothing
  */
 void elf(unsigned char *ptr)
@@ -26,7 +26,7 @@ void elf(unsigned char *ptr)
 
 /**
  *magic - get the magic numbers of an ELF header.
- *@ptr: A pointer to an array of ELF magic numbers
+ *@ptr: A pointer to ELF magic numbers array
  *Return: Nothing
  */
 void magic(unsigned char *ptr)
@@ -47,26 +47,20 @@ void magic(unsigned char *ptr)
 
 /**
  *class - get the class of an ELF header.
- *@ptr: A pointer to an array of the ELF class.
+ *@ptr: A pointer to the ELF class array.
  *Return: Nothing
  */
 void class(unsigned char *ptr)
 {
 	printf("  Class:                             ");
-	switch (ptr[EI_CLASS])
-	{
-		case ELFCLASSNONE:
-			printf("none\n");
-			break;
-		case ELFCLASS32:
-			printf("ELF32\n");
-			break;
-		case ELFCLASS64:
-			printf("ELF64\n");
-			break;
-		default:
-			printf("<unknown: %x>\n", ptr[EI_CLASS]);
-	}
+	if (ptr[EI_CLASS] == ELFCLASSNONE)
+		printf("none\n");
+	else if (ptr[EI_CLASS] == ELFCLASS32)
+		printf("ELF32\n");
+	else if (ptr[EI_CLASS] == ELFCLASS64)
+		printf("ELF64\n");
+	else
+		printf("<unknown: %x>\n", ptr[EI_CLASS]);
 }
 
 /**
