@@ -46,8 +46,7 @@ void files(char *s1, char *s2)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s1);
 		exit(98);
 	}
-	fdt = open(s2, O_CREAT | O_WRONLY | O_TRUNC,
-			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	fdt = open(s2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fdt < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", s2);
