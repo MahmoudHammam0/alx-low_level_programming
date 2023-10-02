@@ -99,8 +99,7 @@ void osabi(unsigned char *ptr)
  */
 void abi(unsigned char *ptr)
 {
-	printf("  ABI Version:                       %d\n",
-			ptr[EI_ABIVERSION]);
+	printf("  ABI Version:                       %d\n", ptr[EI_ABIVERSION]);
 }
 /**
  *class - get the class of an ELF header.
@@ -146,8 +145,7 @@ void entry(unsigned long int entry, unsigned char *ptr)
  */
 void version(unsigned char *ptr)
 {
-	printf("  Version:                           %d",
-			ptr[EI_VERSION]);
+	printf("  Version:                           %d", ptr[EI_VERSION]);
 	if (ptr[EI_VERSION] == EV_CURRENT)
 		printf(" (current)\n");
 	else
@@ -186,7 +184,7 @@ void elf_close(int fd)
 {
 	if (close(fd) < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: problem during close of fd %d\n", fd);
 		exit(98);
 	}
 }
@@ -205,7 +203,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(98);
 	}
 	h = malloc(sizeof(Elf64_Ehdr));
@@ -220,7 +218,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	{
 		free(h);
 		elf_close(fd);
-		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: `%s`: file not found\n", argv[1]);
 		exit(98);
 	}
 
