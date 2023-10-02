@@ -1,5 +1,20 @@
 #include "main.h"
 /**
+ *_strlen - calculate string length
+ *@s: string to be calculated
+ *Return: string length
+ */
+int _strlen(char *s)
+{
+	int i;
+
+	if (s == NULL)
+		return (0);
+	for (i = 0; s[i] != '\0'; i++)
+		;
+	return (i);
+}
+/**
  * append_text_to_file - appends text at the end of a file.
  * @filename: name of the file to be appended
  * @text_content: content to be appended to the file
