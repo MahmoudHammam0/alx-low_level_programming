@@ -65,26 +65,20 @@ void class(unsigned char *ptr)
 
 /**
  *data - gets data of an ELF header.
- *@ptr: A pointer to an array containing the ELF class.
- *Return:Nothing
+ *@ptr: A pointer to the ELF class array.
+ *Return: Nothing
  */
 void data(unsigned char *ptr)
 {
 	printf("  Data:                              ");
-	switch (ptr[EI_DATA])
-	{
-		case ELFDATANONE:
-			printf("none\n");
-			break;
-		case ELFDATA2LSB:
-			printf("2's complement, little endian\n");
-			break;
-		case ELFDATA2MSB:
-			printf("2's complement, big endian\n");
-			break;
-		default:
-			printf("<unknown: %x>\n", ptr[EI_CLASS]);
-	}
+	if (ptr[EI_DATA] == ELFDATANONE)
+		printf("none\n");
+	else if (ptr[EI_DATA] == ELFDATA2LSB)
+		printf("2's complement, little endian\n");
+	else if (ptr[EI_DATA] == ELFDATA2MSB)
+		printf("2's complement, big endian\n");
+	else
+		printf("<unknown: %x>\n", ptr[EI_CLASS]);
 }
 
 /**
@@ -96,16 +90,10 @@ void version(unsigned char *ptr)
 {
 	printf("  Version:                           %d",
 			ptr[EI_VERSION]);
-
-	switch (ptr[EI_VERSION])
-	{
-		case EV_CURRENT:
-			printf(" (current)\n");
-			break;
-		default:
-			printf("\n");
-			break;
-	}
+	if (ptr[EI_VERSION] == EV_CURRENT)
+		printf(" (current)\n");
+	else
+		printf("\n");
 }
 
 /**
