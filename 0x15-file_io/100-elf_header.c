@@ -2,6 +2,21 @@
 #include <elf.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+void magic(unsigned char *ptr)
+{
+	int i;
+
+	printf("  Magic:   ");
+	for (i = 0; i < EI_NIDENT; i++)
+	{
+		printf("%02x", ptr[i]);
+
+		if (i == EI_NIDENT - 1)
+			printf("\n");
+		else
+			printf(" ");
+	}
+}
 /**
  *elf - Checks if the file is ELF file or not
  *@ptr: A pointer to magic numbers array.
@@ -23,28 +38,6 @@ void elf(unsigned char *ptr)
 		}
 	}
 }
-
-/**
- *magic - get the magic numbers of an ELF header.
- *@ptr: A pointer to ELF magic numbers array
- *Return: Nothing
- */
-void magic(unsigned char *ptr)
-{
-	int i;
-
-	printf("  Magic:   ");
-	for (i = 0; i < EI_NIDENT; i++)
-	{
-		printf("%02x", ptr[i]);
-
-		if (i == EI_NIDENT - 1)
-			printf("\n");
-		else
-			printf(" ");
-	}
-}
-
 /**
  *data - gets data of an ELF header.
  *@ptr: A pointer to the ELF class array.
