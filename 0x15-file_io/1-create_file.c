@@ -1,5 +1,20 @@
 #include "main.h"
 /**
+ * _strlen - calculate string length
+ * @s: string to be calculated
+ * Return: string length
+ */
+int _strlen(char *s)
+{
+	int i;
+
+	if (s == NULL)
+		return (0);
+	for (i = 0; s[i] != '\0'; i++)
+		;
+	return (i);
+}
+/**
  * create_file - create a new file and write it
  * @filename: name of the file to be created
  * @text_content: content of the new file
@@ -19,8 +34,7 @@ int create_file(const char *filename, char *text_content)
 		close(fd);
 		return (1);
 	}
-	for (i = 0; text_content[i] != '\0'; i++)
-		;
+	i = _strlen(text_content);
 	w = write(fd, text_content, i);
 	if (w < 0 || w < i)
 	{
