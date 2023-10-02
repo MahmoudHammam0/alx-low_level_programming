@@ -33,7 +33,7 @@ void copy_func(int fdf, int fdt, char *s1, char *s2, char *buff)
  */
 void files(char *s1, char *s2)
 {
-	int fdf, fdt;
+	int fdf, fdt, c1, c2;
 	char *buff;
 
 	fdf = open(s1, O_RDONLY);
