@@ -53,10 +53,10 @@ void data(unsigned char *ptr)
 	printf("  Data:                              ");
 	if (ptr[EI_DATA] == ELFDATANONE)
 		printf("none\n");
-	else if (ptr[EI_DATA] == ELFDATA2LSB)
-		printf("2's complement, little endian\n");
 	else if (ptr[EI_DATA] == ELFDATA2MSB)
 		printf("2's complement, big endian\n");
+	else if (ptr[EI_DATA] == ELFDATA2LSB)
+		printf("2's complement, little endian\n");
 	else
 		printf("<unknown: %x>\n", ptr[EI_CLASS]);
 }
@@ -70,22 +70,22 @@ void osabi(unsigned char *ptr)
 	printf("  OS/ABI:                            ");
 	if (ptr[EI_OSABI] == ELFOSABI_NONE)
 		printf("UNIX - System V\n");
-	else if (ptr[EI_OSABI] == ELFOSABI_HPUX)
-		printf("UNIX - HP-UX\n");
+	else if (ptr[EI_OSABI] == ELFOSABI_ARM)
+		printf("ARM\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_NETBSD)
 		printf("UNIX - NetBSD\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_LINUX)
 		printf("UNIX - Linux\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_SOLARIS)
 		printf("UNIX - Solaris\n");
-	else if (ptr[EI_OSABI] == ELFOSABI_IRIX)
-		printf("UNIX - IRIX\n");
-	else if (ptr[EI_OSABI] == ELFOSABI_FREEBSD)
-		printf("UNIX - FreeBSD\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_TRU64)
 		printf("UNIX - TRU64\n");
-	else if (ptr[EI_OSABI] == ELFOSABI_ARM)
-		printf("ARM\n");
+	else if (ptr[EI_OSABI] == ELFOSABI_FREEBSD)
+		printf("UNIX - FreeBSD\n");
+	else if (ptr[EI_OSABI] == ELFOSABI_IRIX)
+		printf("UNIX - IRIX\n");
+	else if (ptr[EI_OSABI] == ELFOSABI_HPUX)
+		printf("UNIX - HP-UX\n");
 	else if (ptr[EI_OSABI] == ELFOSABI_STANDALONE)
 		printf("Standalone App\n");
 	else
