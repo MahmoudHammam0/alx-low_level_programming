@@ -199,18 +199,17 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	Elf64_Ehdr *h;
 	int fd, r;
-
+	
+	h = malloc(sizeof(Elf64_Ehdr));
+	if (h == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
+		exit(98);
+	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
-		exit(98);
-	}
-	h = malloc(sizeof(Elf64_Ehdr));
-	if (h == NULL)
-	{
-		elf_close(fd);
-		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
 	}
 	r = read(fd, h, sizeof(Elf64_Ehdr));
