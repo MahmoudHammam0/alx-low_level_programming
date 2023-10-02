@@ -4,7 +4,7 @@
 #include <sys/stat.h>
 /**
  * magic - gets the magic numbers of ELF header
- * @ptr: ponter to magic numbers array
+ * @ptr: pointer to magic numbers array
  * Return: Nothing
  */
 void magic(unsigned char *ptr)
@@ -102,9 +102,6 @@ void abi(unsigned char *ptr)
 	printf("  ABI Version:                       %d\n",
 			ptr[EI_ABIVERSION]);
 }
-
-
-
 /**
  *class - get the class of an ELF header.
  *@ptr: A pointer to the ELF class array.
@@ -115,10 +112,10 @@ void class(unsigned char *ptr)
 	printf("  Class:                             ");
 	if (ptr[EI_CLASS] == ELFCLASSNONE)
 		printf("none\n");
-	else if (ptr[EI_CLASS] == ELFCLASS32)
-		printf("ELF32\n");
 	else if (ptr[EI_CLASS] == ELFCLASS64)
 		printf("ELF64\n");
+	else if (ptr[EI_CLASS] == ELFCLASS32)
+		printf("ELF32\n");
 	else
 		printf("<unknown: %x>\n", ptr[EI_CLASS]);
 }
@@ -133,8 +130,7 @@ void entry(unsigned long int entry, unsigned char *ptr)
 	printf("  Entry point address:               ");
 	if (ptr[EI_DATA] == ELFDATA2MSB)
 	{
-		entry = ((entry << 8) & 0xFF00FF00) |
-			((entry >> 8) & 0xFF00FF);
+		entry = ((entry << 8) & 0xFF00FF00) | ((entry >> 8) & 0xFF00FF);
 		entry = (entry << 16) | (entry >> 16);
 	}
 	if (ptr[EI_CLASS] == ELFCLASS32)
@@ -194,7 +190,6 @@ void elf_close(int fd)
 		exit(98);
 	}
 }
-
 /**
  *main - Entry point
  *Description: displays the information contained in the ELF header
