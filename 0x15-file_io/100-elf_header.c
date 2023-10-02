@@ -203,9 +203,9 @@ void elf_close(int fd)
 /**
  *main - Displays the information contained in the
  *Description: displays the information contained in the ELF header
- *@argc: The number of arguments supplied to the program.
- *@argv: An array of pointers to the arguments
- *Return: 0 on success
+ *@argc: arguments number
+ *@argv: array of pointers to the arguments strings
+ *Return: 0 on Success
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
@@ -213,7 +213,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	int fd, r;
 
 	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
@@ -226,7 +226,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		exit(98);
 	}
 	r = read(fd, h, sizeof(Elf64_Ehdr));
-	if (r == -1)
+	if (r < 0)
 	{
 		free(h);
 		elf_close(fd);
