@@ -197,9 +197,9 @@ void elf_close(int fd)
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
+	int r, fd;
 	Elf64_Ehdr *h;
-	int fd, r;
-	
+
 	h = malloc(sizeof(Elf64_Ehdr));
 	if (h == NULL)
 	{
