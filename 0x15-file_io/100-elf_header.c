@@ -2,6 +2,11 @@
 #include <elf.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+/**
+ * magic - gets the magic numbers of ELF header
+ * @ptr: ponter to magic numbers array
+ * Return: Nothing
+ */
 void magic(unsigned char *ptr)
 {
 	int i;
