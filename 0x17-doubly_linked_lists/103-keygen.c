@@ -12,8 +12,7 @@ int main(int argc, char *argv[])
 {
 	char *s = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
 	char h[7] = "      ";
-	unsigned int idx, v;
-	size_t size = strlen(argv[1]), sum;
+	unsigned int idx, v, size = strlen(argv[1]), sum;
 
 	if (argc != 2)
 	{
