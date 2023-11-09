@@ -1,61 +1,44 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <time.h>
+#include <stdlib.h>
 
 /**
- * generate_key - Generate a key
- *
- * Return: Pointer to generated key (char *)
- */
-char *generate_key(void)
+ *  * main - generate a key depending on a username for crackme5
+ *   * @argc: number of arguments passed
+ *    * @argv: main arguments
+ *     * Return: 0 on success, 1 on error
+ *      */
+int main(int argc, char *argv[])
 {
-	char possible_chars[] = "abcdefghijklmnopqrstuvwxyz0123456789";
-	char *key = malloc(9 * sizeof(char));
-	int i;
+	unsigned int i, b;
+	size_t len, add;
+	char *l = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	char p[7] = "      ";
 
-	srand(time(NULL));
-	for (i = 0; i < 7; i++)
+	if (argc != 2)
 	{
-		key[i] = possible_chars[rand() % (sizeof(possible_chars) - 1)];
+		printf("Correct usage: ./keygen5 username\n");
+		return (1);
 	}
-	key[7] = '@';
-	key[rand() % 8] = '-';
-	key[8] = '\0';
-
-	return (key);
-}
-
-/**
- * test_key_gen - Test the key generation
- * @program: Program name
- * @test_count: Number of tests
- */
-void test_key_gen(const char *program, int test_count)
-{
-	int i;
-	char *key, command[50];
-	FILE *pipe;
-
-	for (i = 0; i < test_count; i++)
-	{
-		key = generate_key();
-		printf("test %d: %s\n", i + 1, key);
-		sprintf(command, "%s %s", program, key);
-		pipe = popen(command, "r");
-		pclose(pipe);
-		free(key);
-	}
-	printf("completed %d successful runs!\n", test_count);
-}
-
-/**
- * main - Entry point
- * Return: 0
- */
-int main(void)
-{
-	test_key_gen("./crackme5", 50);
-
+	len = strlen(argv[1]);
+	p[0] = l[(len ^ 59) & 63];
+	for (i = 0, add = 0; i < len; i++)
+		add += argv[1][i];
+	p[1] = l[(add ^ 79) & 63];
+	for (i = 0, b = 1; i < len; i++)
+		b *= argv[1][i];
+	p[2] = l[(b ^ 85) & 63];
+	for (b = argv[1][0], i = 0; i < len; i++)
+		if ((char)b <= argv[1][i])
+			b = argv[1][i];
+	srand(b ^ 14);
+	p[3] = l[rand() & 63];
+	for (b = 0, i = 0; i < len; i++)
+		b += argv[1][i] * argv[1][i];
+	p[4] = l[(b ^ 239) & 63];
+	for (b = 0, i = 0; (char)i < argv[1][0]; i++)
+		b = rand();
+	p[5] = l[(b ^ 229) & 63];
+	printf("%s\n", p);
 	return (0);
 }
