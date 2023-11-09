@@ -29,8 +29,11 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		idx--;
 	}
 	temp2 = temp1->next;
-	if (!temp1)
+	if (temp1 == NULL || temp2 == NULL)
+	{
+		free(node);
 		return (NULL);
+	}
 	temp1->next = node;
 	temp2->prev = node;
 	node->next = temp2;
