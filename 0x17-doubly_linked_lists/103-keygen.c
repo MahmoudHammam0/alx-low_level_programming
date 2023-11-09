@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	char h[7] = "      ";
 	unsigned int idx, v, size = strlen(argv[1]), sum;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		printf("Correct usage: ./keygen5 username\n");
 		return (1);
