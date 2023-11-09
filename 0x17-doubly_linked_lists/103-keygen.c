@@ -11,7 +11,7 @@
 int main(int argc, char *argv[])
 {
 	unsigned int idx, v;
-	size_t size, sum;
+	size_t size = strlen(argv[1]), sum;
 	char *s = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
 	char h[7] = "      ";
 
@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
 		printf("Correct usage: ./keygen5 username\n");
 		return (1);
 	}
-	size = strlen(argv[1]);
 	h[0] = s[(size ^ 59) & 63];
 	for (idx = 0, sum = 0; idx < size; idx++)
 		sum += argv[1][idx];
