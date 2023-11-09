@@ -38,6 +38,6 @@ int main(int argc, char *argv[])
 	for (v = 0, idx = 0; (char)idx < argv[1][0]; idx++)
 		v = rand();
 	h[5] = str[(v ^ 229) & 63];
-	printf("%s\n", p);
+	printf("%s\n", h);
 	return (0);
 }
