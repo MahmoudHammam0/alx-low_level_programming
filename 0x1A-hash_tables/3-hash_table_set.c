@@ -1,47 +1,65 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_set - adds an element to the hash table.
- * @ht: hash table you want to add or update the key/value to
- * @key: key string
- * @value: value string
- * Return: 1 (Success) otherwise return 0
- */
+ *  * hash_table_set - adds an element to the hash table.
+ *   * @ht: hash table you want to add or update the key/value to
+ *    * @key: key string
+ *     * @value: value string
+ *      * Return: 1 (Success) otherwise return 0
+ *       */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *node;
-	char *value_cpy;
-	unsigned long int index, i;
+	hash_node_t *node = create_item(key, value);
+	unsigned long int index;
+	hash_node_t *current_item = ht->array[index];
 
-	if (ht == NULL || key == NULL || value == NULL || *key == '\0')
+	if (node == NULL || ht == NULL)
 		return (0);
-	value_cpy = strdup(value);
-	if (value_cpy == NULL)
-		return (0);
-	index = key_index((const unsigned char *)key, ht->size);
-	for (i = index; ht->array[i]; i++)
+	index = key_index((unsigned char *)key, ht->size);
+	if (current_item == NULL)
 	{
-		if (strcmp(ht->array[i]->key, key) == 0)
+		ht->array[index] = node;
+		return (1);
+	}
+	else
+	{
+		if (strcmp(current_item->key, key) == 0)
 		{
-			free(ht->array[i]->value);
-			ht->array[i]->value = value_cpy;
+			strcpy(current_item->value, value);
+			return (1);
+		}
+		else
+		{
+			node->next = current_item;
+			ht->array[index] = node;
 			return (1);
 		}
 	}
+	return (0);
+}
+
+/**
+ *  * create_item - create item to be added to the hash_table
+ *   * @key: key string
+ *    * @value: value string
+ *     * Return: a pointer to created item
+ *      */
+hash_node_t *create_item(const char *key, const char *value)
+{
+	hash_node_t *node;
+
+	if (key == NULL || *key == '\0')
+		return (NULL);
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
-	{
-		free(value_cpy);
-		return (0);
-	}
-	node->key = strdup(key);
+		return (NULL);
+	node->key = malloc(strlen(key) + 1);
 	if (node->key == NULL)
-	{
-		free(node);
-		return (0);
-	}
-	node->value = value_cpy;
-	node->next = ht->array[index];
-	ht->array[index] = node;
-	return (1);
+		return (NULL);
+	node->value = malloc(strlen(value) + 1);
+	if (node->value == NULL)
+		return (NULL);
+	strcpy(node->key, key);
+	strcpy(node->value, value);
+	return (node);
 }
