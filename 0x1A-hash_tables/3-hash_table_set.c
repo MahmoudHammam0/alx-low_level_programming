@@ -14,12 +14,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (ht == NULL || key == NULL || value == NULL || *key == '\0')
 		return (0);
+	value_cpy = strdup(value);
+	if (value_cpy == NULL)
+		return (0);
 	for (i = index; ht->array[i]; i++)
 	{
 		if (strcmp(ht->array[i]->key, key) == 0)
 		{
 			free(ht->array[i]->value);
-			ht->array[i]->value = strdup(value);
+			ht->array[i]->value = value_cpy;
 			return (1);
 		}
 	}
