@@ -22,17 +22,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		if (strcmp(current_item->key, key) == 0)
-		{
-			strcpy(current_item->value, value);
-			return (1);
-		}
-		else
-		{
-			node->next = current_item;
-			ht->array[index] = node;
-			return (1);
-		}
+		node->next = current_item;
+		ht->array[index] = node;
+		return (1);
 	}
 	return (0);
 }
