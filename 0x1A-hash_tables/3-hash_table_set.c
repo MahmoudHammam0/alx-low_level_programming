@@ -15,27 +15,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
-	if (current_item == NULL)
+	for (i = index; ht->array[i]; i++)
 	{
-		ht->array[index] = node;
-		return (1);
-	}
-	else
-	{
-		for (i = index; ht->array[i]; i++)
+		if (strcmp(ht->array[i]->key, key) == 0)
 		{
-			if (strcmp(ht->array[i]->key, key) == 0)
-			{
-				free(ht->array[i]->value);
-				ht->array[i]->value = strdup(value);
-				return (1);
-			}
+			free(ht->array[i]->value);
+			ht->array[i]->value = strdup(value);
+			return (1);
 		}
-		node->next = ht->array[index];
-		ht->array[index] = node;
-		return (1);
 	}
-	return (0);
+	node->next = ht->array[index];
+	ht->array[index] = node;
+	return (1);
 }
 
 /**
