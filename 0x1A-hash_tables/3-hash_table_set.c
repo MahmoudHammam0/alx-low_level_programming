@@ -17,8 +17,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	if (current_item == NULL)
 	{
-		if (index > ht->size)
-			return (0);
 		ht->array[index] = node;
 		return (1);
 	}
