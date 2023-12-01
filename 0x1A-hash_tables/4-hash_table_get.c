@@ -17,5 +17,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	item = ht->array[index];
 	if (item == NULL)
 		return (NULL);
+	if (item->value == NULL)
+		return (NULL);
 	return (item->value);
 }
