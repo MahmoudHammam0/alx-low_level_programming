@@ -17,15 +17,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	if (current_item == NULL)
 	{
-		current_item = node;
+		ht->array[index] = node;
 		return (1);
 	}
 	else
 	{
 		if (strcmp(current_item->key, key) == 0)
 		{
-			free(current_item->value);
-			current_item->value = malloc(strlen(value) + 1);
 			strcpy(current_item->value, value);
 			return (1);
 		}
@@ -49,7 +47,7 @@ hash_node_t *create_item(const char *key, const char *value)
 {
 	hash_node_t *node;
 
-	if (key == "")
+	if (key == NULL)
 		return (NULL);
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
