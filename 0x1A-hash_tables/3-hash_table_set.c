@@ -47,7 +47,7 @@ hash_node_t *create_item(const char *key, const char *value)
 {
 	hash_node_t *node;
 
-	if (key == NULL)
+	if (key == NULL || key == '\0')
 		return (NULL);
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
