@@ -1,12 +1,12 @@
 #include "hash_tables.h"
 
 /**
- *  * hash_table_set - adds an element to the hash table.
- *   * @ht: hash table you want to add or update the key/value to
- *    * @key: key string
- *     * @value: value string
- *      * Return: 1 (Success) otherwise return 0
- *       */
+ * hash_table_set - adds an element to the hash table.
+ * @ht: hash table you want to add or update the key/value to
+ * @key: key string
+ * @value: value string
+ * Return: 1 (Success) otherwise return 0
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *node = create_item(key, value);
@@ -40,11 +40,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 }
 
 /**
- *  * create_item - create item to be added to the hash_table
- *   * @key: key string
- *    * @value: value string
- *     * Return: a pointer to created item
- *      */
+ * create_item - create item to be added to the hash_table
+ * @key: key string
+ * @value: value string
+ * Return: a pointer to created item
+ */
 hash_node_t *create_item(const char *key, const char *value)
 {
 	hash_node_t *node;
