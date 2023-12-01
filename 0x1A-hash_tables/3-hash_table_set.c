@@ -62,7 +62,6 @@ hash_node_t *create_item(const char *key, const char *value)
 	node->value = strdup(value);
 	if (node->value == NULL)
 	{
-		free(key);
 		free(node);
 		return (NULL);
 	}
