@@ -8,11 +8,14 @@ def island_perimeter(grid):
     width = 0
     for the_list in grid:
         for i in range(len(the_list)):
-            if i == 0 or i == len(the_list) - 1:
-                continue
-            elif the_list[i] == 1:
-                if the_list[i - 1] == 0:
-                    length += 1
-                if the_list[i + 1] == 1 or the_list[i - 1] == 1:
-                    width += 1
+            if the_list[i] == 1 and i == 0:
+                length += 1
+            if the_list[i] == 1 and i == len(the_list) - 1:
+                width += 1
+            if i > 0 and i < len(the_list) - 1:
+                if the_list[i] == 1:
+                    if the_list[i - 1] == 0:
+                        length += 1
+                    if the_list[i + 1] == 1 or the_list[i - 1] == 1:
+                        width += 1
     return (length + width) * 2
