@@ -8,7 +8,7 @@ def island_perimeter(grid):
     width = 0
     for the_list in grid:
         for i in range(len(the_list)):
-            if i == 0:
+            if i == 0 or i == len(the_list) - 1:
                 continue
             elif the_list[i] == 1:
                 if the_list[i - 1] == 0:
