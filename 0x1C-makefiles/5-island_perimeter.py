@@ -4,25 +4,14 @@
 
 def island_perimeter(grid):
     '''returns the perimeter of the island described in grid'''
-    length = 0
-    width = 0
-    for the_list in grid:
-        for i in range(len(the_list)):
-            if the_list[i] == 1 and i == 0:
-                if the_list[i + 1] == 0:
-                    length += 1
-                else:
-                    length += 1
-                    width += 1
-            if the_list[i] == 1 and i == len(the_list) - 1:
-                if the_list[i - 1] == 1:
-                    width += 1
-                else:
-                    length += 1
-            if i > 0 and i < len(the_list) - 1:
-                if the_list[i] == 1:
-                    if the_list[i - 1] == 0:
-                        length += 1
-                    if the_list[i + 1] == 1 or the_list[i - 1] == 1:
-                        width += 1
-    return (length + width) * 2
+    res = 0
+    land = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 1:
+                res += 4
+            if i != 0 and grid[i - 1][j] == 1:
+                land += 1
+            if j != 0 and grid[i][j - 1] == 1:
+                land += 1
+    return res - (land * 2)
