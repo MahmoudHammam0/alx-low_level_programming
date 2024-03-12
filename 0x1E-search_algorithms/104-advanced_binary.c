@@ -1,5 +1,13 @@
 #include "search_algos.h"
 
+/**
+ * recursive_binary - searches for a value in a sorted array of integers.
+ * @array: array to be searched
+ * @low: start index
+ * @high: end index
+ * @value: value to be searched
+ * Return: index of value
+ */
 int recursive_binary(int *array, int low, int high, int value)
 {
 	int mid = low + (high - low) / 2, i;
@@ -22,10 +30,17 @@ int recursive_binary(int *array, int low, int high, int value)
 			return (mid);
 	}
 	if (array[mid] >= value)
-		return recursive_binary(array, low, mid, value);
+		return (recursive_binary(array, low, mid, value));
 	return (recursive_binary(array, mid + 1, high, value));
 }
 
+/**
+ * advanced_binary - searches for a value in a sorted array of integers.
+ * @array: array to be searched
+ * @size: size of the array
+ * @value: value to search for in the array
+ * Return: index of value or -1
+ */
 int advanced_binary(int *array, size_t size, int value)
 {
 	int low = 0, high = size - 1;
