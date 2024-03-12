@@ -21,7 +21,7 @@ int recursive_binary(int *array, int low, int high, int value)
 		if (mid == low || array[mid - 1] != value)
 			return (mid);
 		else
-			return recursive_binary(array, low, mid - 1, value);
+			return recursive_binary(array, low, mid, value);
 	}
 	else if (array[mid] < value)
 		return recursive_binary(array, mid + 1, high, value);
