@@ -1,14 +1,13 @@
 #include "search_algos.h"
 #include <math.h>
 
-int min(int a, int b)
-{
-	if (a > b)
-		return (b);
-	else
-		return (a);
-}
-
+/**
+ * jump_search - searches for a value using the Jump search algorithm
+ * @array: array to be searched
+ * @size: size of the array
+ * @value: value to search for in the array
+ * Return: index of value or -1
+ */
 int jump_search(int *array, size_t size, int value)
 {
 	int prev, step, i, len = size;
