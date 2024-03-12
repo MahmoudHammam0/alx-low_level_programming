@@ -17,7 +17,11 @@ int recursive_binary(int *array, int low, int high, int value)
 	}
 	printf("%d\n", array[i]);
 	if (array[mid] == value)
+	{
+		while (mid > low && array[mid - 1] == value)
+			mid--;
 		return (mid);
+	}
 	else if (array[mid] > value)
 		return recursive_binary(array, low, mid - 1, value);
 	else
