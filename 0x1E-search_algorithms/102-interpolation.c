@@ -1,5 +1,12 @@
 #include "search_algos.h"
 
+/**
+ * interpolation_search - searches for a value using the Interpolation search
+ * @array: array to be searched
+ * @size: size of the array
+ * @value: value to search for in the array
+ * Return: index of value or -1
+ */
 int interpolation_search(int *array, size_t size, int value)
 {
 	int low, high;
