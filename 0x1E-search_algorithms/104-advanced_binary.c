@@ -4,7 +4,7 @@ int recursive_binary(int *array, int low, int high, int value)
 {
 	int mid = (low + high) / 2, i;
 
-	if (low > high)
+	if (low > high || array == NULL)
 		return (-1);
 	printf("Searching in array: ");
 	i = low;
@@ -18,10 +18,10 @@ int recursive_binary(int *array, int low, int high, int value)
 	printf("%d\n", array[i]);
 	if (array[mid] == value)
 	{
-		if (array[mid - 1] != value)
-			return (mid);
+		if (array[mid - 1] == value)
+			return recursive_binary(array, low, mid - 1, value);
 		else
-			return recursive_binary(array, low, mid, value);
+			return (mid);
 	}
 	else if (array[mid] > value)
 		return recursive_binary(array, low, mid - 1, value);
