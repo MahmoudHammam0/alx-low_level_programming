@@ -36,7 +36,7 @@ int advanced_binary(int *array, size_t size, int value)
 	if (array == NULL)
 		return (-1);
 	index = recursive_binary(array, low, high, value);
-	if (index <= high)
+	if (index < high)
 		return (index);
 	return (-1);
 }
