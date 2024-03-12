@@ -1,5 +1,11 @@
 #include "search_algos.h"
 
+/**
+ * min - finds minimum of two numbers
+ * @a: first number
+ * @b: second number
+ * Return: minimum number
+ */
 int min(int a, int b)
 {
 	if (a > b)
@@ -8,6 +14,13 @@ int min(int a, int b)
 		return (a);
 }
 
+/**
+ * exponential_search - searches for a value using the Exponential search
+ * @array: array to be searched
+ * @size: size of the array
+ * @value: value to search for in the array
+ * Return: index of value or -1
+ */
 int exponential_search(int *array, size_t size, int value)
 {
 	int len = size;
