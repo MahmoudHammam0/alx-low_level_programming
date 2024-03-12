@@ -2,7 +2,7 @@
 
 int recursive_binary(int *array, int low, int high, int value)
 {
-	int mid = low + (high - low) / 2, i;
+	int mid = (high + low) / 2, i;
 
 	if (low > high || array == NULL)
 		return (-1);
