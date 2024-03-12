@@ -19,7 +19,7 @@ int recursive_binary(int *array, int low, int high, int value)
 	if (array[mid] == value)
 	{
 		if (array[mid - 1] == value)
-			return recursive_binary(array, low, mid - 1, value);
+			return recursive_binary(array, low, mid, value);
 		else
 			return (mid);
 	}
