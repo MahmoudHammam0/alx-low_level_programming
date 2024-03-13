@@ -2,7 +2,7 @@
 #include <math.h>
 
 /**
- * jump_list - searches for a value using the Jump search algorithm.
+ * linear_skip - searches for a value using the Jump search algorithm.
  * @list: head pointer to header node
  * @value: value to search for in the list
  * Return: pointer to node with the same value or null
